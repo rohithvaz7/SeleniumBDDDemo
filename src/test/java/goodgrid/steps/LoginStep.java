@@ -20,14 +20,12 @@ import java.util.List;
  */
 public class LoginStep extends BaseUtil{
 
-    public LoginStep(BaseUtil base) {
-    }
+    /*public LoginStep(BaseUtil base) {
+    }*/
 
     @Given("^I navigate to the login page$")
     public void iNavigateToTheLoginPage() throws Throwable {
-
-
-        scenarioDef.createNode(new GherkinKeyword("Given"), "I navigate to the login page");
+        //scenarioDef.createNode(new GherkinKeyword("Given"), "I navigate to the login page");
         System.out.println("Navigate Login Page");
         pageObjectManager.getLoginPage().navigateToHomePage();
     }

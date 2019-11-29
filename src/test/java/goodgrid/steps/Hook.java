@@ -6,6 +6,7 @@ import goodgrid.Base.BaseUtil;
 import cucumber.api.PickleStepTestStep;
 import cucumber.api.TestCase;
 import gherkin.pickles.PickleStep;
+import goodgrid.managers.PageObjectManager;
 import io.cucumber.core.api.Scenario;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
@@ -27,24 +28,13 @@ public class Hook extends BaseUtil{
         this.base = base;
     }
 
+
     @Before
     public void InitializeTest(Scenario scenario) {
-
-
-        scenarioDef = base.features.createNode(scenario.getName());
-
-        System.out.println("Opening the browser : Firefox");
-
-        /*System.setProperty("webdriver.firefox.marionette", "D:\\Libs\\geckodriver.exe");
-        base.Driver = new FirefoxDriver();*/
-
-
-        //Chrome driver
-//        System.setProperty("webdriver.chrome.driver", "/Users/karthikkk/ChromeDriver/chromedriver");
-//        base.Driver = new ChromeDriver();
-
-        System.setProperty("webdriver.chrome.driver", "/Users/karthikkk/ChromeDriver/chromedriver");
+        //scenarioDef = base.features.createNode(scenario.getName());
+        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/drivers/chromedriver.exe");
         base.Driver = new ChromeDriver();
+        pageObjectManager = new PageObjectManager(base.Driver);
     }
 
 

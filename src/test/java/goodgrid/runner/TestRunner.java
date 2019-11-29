@@ -9,8 +9,9 @@ import org.testng.annotations.DataProvider;
  * Created by Vineeth on 29/11/2019.
  */
 
-@CucumberOptions(features = {"src/test/java/goodgrid/features"} , plugin = {"json:target/cucumber.json","html:target/site/cucumber-pretty"},
-        glue = "steps")
+@CucumberOptions(features = {"src/test/java/goodgrid/features"} ,
+    plugin = {"json:target/cucumber.json","html:target/site/cucumber-pretty"},
+    glue = "goodgrid/steps")
 public class TestRunner extends AbstractTestNGCucumberTests {
 
 

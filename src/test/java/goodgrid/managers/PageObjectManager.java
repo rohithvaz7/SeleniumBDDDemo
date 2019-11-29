@@ -11,13 +11,10 @@ public class PageObjectManager {
     private LoginPage loginPage;
 
     public PageObjectManager(WebDriver driver) {
-
         this.driver = driver;
-
     }
 
     public LoginPage getLoginPage() {
-
         return (loginPage == null) ? loginPage = new LoginPage(driver) : loginPage;
 
     }
