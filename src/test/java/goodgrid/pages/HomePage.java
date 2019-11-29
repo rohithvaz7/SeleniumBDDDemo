@@ -1,6 +1,8 @@
 package goodgrid.pages;
 
 import goodgrid.utils.HelperUtils;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,7 +18,7 @@ public class HomePage {
     @FindBy(xpath="//span[text()='Create an Action']")
     WebElement createActionButton;
 
-    @FindBy(xpath="//input[@id='textfield-1151-inputEl']")
+    @FindBy(xpath="//input[@placeholder='Enter a Title for your Action']")
     WebElement actionTitle;
 
     @FindBy(xpath="//div[@id='cc-resource-assignto-1406-trigger-resources']")
@@ -31,12 +33,23 @@ public class HomePage {
     @FindBy(xpath="(//div[@class='x-menu-item x-menu-item-default x-box-item']/a/span[text()='Me'])[2]/..")
     WebElement alsoVisibleToValue;
 
-    @FindBy(xpath="//div[@class='x-tagfield x-form-field x-form-empty-field x-form-empty-field-default x-form-text x-form-text-default']")
+    @FindBy(xpath="//a/span[text()='Me']")
     WebElement alsoVisibleToValue1;
 
 
+    @FindBy(xpath=" //span[contains(text(),'Add a description for your Action')]")
+    WebElement descriptiontextBox;
+
     @FindBy(xpath="//html/head/style[@type='text/css']/../../body")
     WebElement description;
+
+    @FindBy(xpath="//iframe[contains(@id,'cc-custom')]")
+    WebElement descriptionFrame;
+
+    @FindBy(xpath="//span[text()='Save']/../../..")
+    WebElement saveButton;
+
+
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -54,17 +67,21 @@ public class HomePage {
     public void clicKCreateAction() throws InterruptedException {
         globalIcon.click();
         createActionButton.click();
-        new HelperUtils(driver).implicitWait(20);
-        actionTitle.sendKeys("Sample Title");
+        new HelperUtils(driver).explicitWait(20,actionTitle);
+        actionTitle.sendKeys("Sample Title_1");
         //assignToDropDown.click();
-        //Thread.sleep(1000);
         //assignToValue.click();
-        //alsoVisibleToDropDown.click();
-        //new HelperUtils(driver).explicitWait(10,alsoVisibleToValue);
-        //alsoVisibleToValue.click();
-        alsoVisibleToValue1.sendKeys("Me");
+        alsoVisibleToDropDown.click();
+        alsoVisibleToValue1.click();
+        Thread.sleep(3000);
+        descriptiontextBox.click();
+        driver.switchTo().frame(descriptionFrame);
         description.sendKeys("test");
-
-
+        driver.switchTo().defaultContent();
+        Thread.sleep(8000);
+        new HelperUtils(driver).waitForElementToBeEnabled(saveButton);
+        saveButton.sendKeys(Keys.ENTER);
+        System.out.println("Action Saved Succesfully");
+        Thread.sleep(5000);
     }
 }

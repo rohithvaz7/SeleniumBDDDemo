@@ -27,8 +27,7 @@ public class BaseUtil {
     public static String reportLocation = "SeleniumBDDPOC//report/";
 
     public BaseUtil(){
-        /*Driver = webDriverManager.getDriver();
-        pageObjectManager = new PageObjectManager(Driver);*/
+        pageObjectManager = new PageObjectManager(Driver);
     }
 
 }

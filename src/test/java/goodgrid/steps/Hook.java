@@ -7,6 +7,7 @@ import cucumber.api.PickleStepTestStep;
 import cucumber.api.TestCase;
 import gherkin.pickles.PickleStep;
 import goodgrid.managers.PageObjectManager;
+import goodgrid.managers.WebDriverManager;
 import io.cucumber.core.api.Scenario;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
@@ -23,9 +24,11 @@ public class Hook extends BaseUtil{
 
 
     private BaseUtil base;
+    public WebDriverManager webDriverManager;
 
     public Hook(BaseUtil base) {
         this.base = base;
+        webDriverManager=new WebDriverManager();
     }
 
 
@@ -33,7 +36,7 @@ public class Hook extends BaseUtil{
     public void InitializeTest(Scenario scenario) {
         //scenarioDef = base.features.createNode(scenario.getName());
         System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/drivers/chromedriver.exe");
-        base.Driver = new ChromeDriver();
+        base.Driver = webDriverManager.getDriver();
         pageObjectManager = new PageObjectManager(base.Driver);
     }
 

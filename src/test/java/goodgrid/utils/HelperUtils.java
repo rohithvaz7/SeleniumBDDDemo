@@ -25,4 +25,14 @@ public class HelperUtils {
         WebDriverWait wait=new WebDriverWait(driver,seconds);
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
+
+    public void waitForElementToBeEnabled(WebElement element) throws InterruptedException {
+        int i=0;
+        do{
+            Thread.sleep(4000);
+            element.isEnabled();
+            i++;
+        }
+        while(!element.isEnabled() && i<5);
+    }
 }
