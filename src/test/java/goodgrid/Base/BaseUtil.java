@@ -16,7 +16,7 @@ public class BaseUtil {
     public static WebDriver Driver;
 
 	public WebDriverManager webDriverManager;
-    public PageObjectManager pageObjectManager;
+    public static PageObjectManager pageObjectManager;
 
     public ExtentReports extent;
 

@@ -4,14 +4,16 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Optional;
 import java.util.Properties;
 
 import goodgrid.enums.DriverType;
 import goodgrid.enums.EnvironmentType;
+import org.apache.commons.exec.util.StringUtils;
 
 public class ConfigFileReader {
     private Properties properties;
-    private final String propertyFilePath = "configs//Configuration.properties";
+    private final String propertyFilePath = "resources//Configuration.properties";
 
     public ConfigFileReader() {
         BufferedReader reader;
@@ -77,6 +79,22 @@ public class ConfigFileReader {
         String windowSize = properties.getProperty("windowMaximize");
         if (windowSize != null) return Boolean.valueOf(windowSize);
         return true;
+    }
+
+    public String getUserName() {
+        String username = properties.getProperty("username").trim();
+        if(username != null && !username.isEmpty())
+            return username;
+        else
+            throw new RuntimeException("Username is not specified in the file ");
+    }
+
+    public String getPassword() {
+        String password = properties.getProperty("password").trim();
+        if(password != null && !password.isEmpty())
+            return password;
+        else
+            throw new RuntimeException("Username is not specified in the file ");
     }
 
 }
