@@ -1,7 +1,5 @@
 package goodgrid.utils;
 
-import org.omg.CORBA.TIMEOUT;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -30,7 +28,8 @@ public class HelperUtils {
         int i=0;
         do{
             Thread.sleep(4000);
-            element.isEnabled();
+            if(element.isEnabled())
+            break;
             i++;
         }
         while(!element.isEnabled() && i<5);

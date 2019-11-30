@@ -1,12 +1,10 @@
 package goodgrid.pages;
 
+import goodgrid.managers.FileReaderManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-
-import goodgrid.managers.FileReaderManager;
 
 /**
  * Created by Vineeth on 29/11/2019.

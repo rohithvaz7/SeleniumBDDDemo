@@ -1,23 +1,14 @@
 package goodgrid.steps;
 
 import goodgrid.Base.BaseUtil;
-import goodgrid.ConfigFileReader;
 import goodgrid.managers.FileReaderManager;
-import goodgrid.managers.PageObjectManager;
-
-import com.aventstack.extentreports.GherkinKeyword;
-
 import goodgrid.pages.HomePage;
+import goodgrid.pages.LoginPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import goodgrid.pages.LoginPage;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Vineeth on 29/11/2019.
@@ -25,7 +16,7 @@ import java.util.List;
 public class LoginStep extends BaseUtil{
 
     HomePage home;
-    LoginPage login=pageObjectManager.getLoginPage();
+    LoginPage login;
 
 
     @Given("^I navigate to the login page$")
@@ -50,11 +41,36 @@ public class LoginStep extends BaseUtil{
     @Then("^login should be successful and home page is displayed$")
     public void successfulLogin() throws Throwable {
         home=pageObjectManager.getHomePage();
-        System.out.println("Navigate Login Page");
         home.waitForGlobalIcon();
+        System.out.println("Home Page successfully loaded");
         String actualTitle=home.getTitle();
         Assert.assertEquals("FindGood",actualTitle);
+    }
+
+    @Then("^I click on Global Icon and Create Action$")
+    public void clickOnCreateAction() throws InterruptedException {
+        home=pageObjectManager.getHomePage();
         home.clicKCreateAction();
+        System.out.println("Clicked on Create Action Button");
+    }
+
+    @And("^pass Title Description AssignTo and AlsoVisibleTo parameters$")
+    public void passCreateActionParameters(){
+        home=pageObjectManager.getHomePage();
+        home.passActionCreationParameters();
+        System.out.println("All required Parameters are passed");
+    }
+
+    @And("^click on Save button$")
+    public void clickSaveButton() throws InterruptedException {
+        home=pageObjectManager.getHomePage();
+        home.clickSave();
+    }
+
+    @Then("^Action is successfully saved and details are verified$")
+    public void verifyDetailsOfTheCreatedAction() throws InterruptedException {
+        home=pageObjectManager.getHomePage();
+        home.verifyTheCreatedActionDetails();
     }
 
 }
