@@ -10,7 +10,7 @@ import org.testng.annotations.DataProvider;
  */
 
 @CucumberOptions(features = {"src/test/java/goodgrid/features"} ,
-    plugin = {"json:target/cucumber.json","html:target/site/cucumber-pretty"},
+    plugin = {"json:target/cucumber.json","html:src/test/java/goodgrid/reports"},
     glue = "goodgrid/steps")
 public class TestRunner extends AbstractTestNGCucumberTests {
 

@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
 
-    String titleName="Sample_Title_9";
+    String titleName="Sample_Title_10";
     WebDriver driver;
 
     @FindBy(xpath="//a[@class='x-btn fg-plus-btn x-unselectable x-box-item x-toolbar-item x-btn-default-small']")
